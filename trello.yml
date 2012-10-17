@@ -1,0 +1,8 @@
+api_key: 347516bba416a50240a960770fbd054e
+oauth_token: b28080bc53868d3475e2560f31315a2586d52cd0ec161c32b6b8b627830d003e
+issue_list:
+  pimnijdam/test-repos:50754a500d6636b66f48110a
+developer_portal:
+  path: "/var/www/developer-portal"
+  pid: "/var/www/developer-portal/tmp/pids/unicorn.pid"
+

@@ -1,0 +1,7 @@
+---
+oauth_token: 08e1475aa919c41b1b3c9d60e7808d252e559d47
+basic_auth: murek:Testing123
+user: murek
+repo: github_api_test
+org:
+email: p_murek@wp.pl
