@@ -2,7 +2,6 @@ require "json"
 require "sinatra/base"
 require "github-trello/version"
 require "github-trello/http"
-require "pry"
 
 
 module GithubTrello
@@ -103,7 +102,6 @@ module GithubTrello
     post "/issue" do
       config, http = self.class.config, self.class.http
 
-      puts params.inspect
       payload = JSON.parse(params[:payload])
 
       #For now only handle newly created issues
