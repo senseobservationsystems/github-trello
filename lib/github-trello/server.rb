@@ -2,6 +2,8 @@ require "json"
 require "sinatra/base"
 require "github-trello/version"
 require "github-trello/http"
+require "pry"
+
 
 module GithubTrello
   class Server < Sinatra::Base
@@ -98,25 +100,38 @@ module GithubTrello
       ""
     end
 
-    POST "/issue" do
+    post "/issue" do
       config, http = self.class.config, self.class.http
 
+      puts params.inspect
       payload = JSON.parse(params[:payload])
-      puts (payload)
-      #TODO: check for issue creation
-      list_id = config["issue_list"][payload["repository"]["name"]]
+
+      #For now only handle newly created issues
+      if (payload["action"] != "opened")
+        puts "Not handling issue #{payload["action"]}."
+        return
+      end
+
+      repos = payload["repository"]["full_name"]
+      puts config["issue_list"].inspect
+      list_id = config["issue_list"][repos]
+      unless list_id 
+        list_id = config["issue_list"]["default"]
+      end
       unless list_id
-        puts "[ERROR] Issue from #{payload["repository"]["name"]} but no list_id entry found in config"
+        puts "[ERROR] Issue from #{repos} but no list_id entry nor default entry found in config"
         return
       end
 
       #parse issue to create a nice card name and description with a link to the issue
-      card_name = "#{payload["title"]}"
-      card_desc = "#{payload["body"]}\n\nGithub [issue #{payload["number"]}](#{payload["html_url"]})"
+      issue = payload["issue"]
+      card_name = "#{issue["title"]}"
+      card_desc = "#{issue["body"]}\n\nGithub [issue #{issue["number"]}](#{issue["html_url"]})"
       card = {}
       card[:name] = card_name
       card[:desc] = card_desc
       card[:idList] = list_id
+      puts "Posting card #{card.inspect}."
       http.add_card(card)
 
       ""
