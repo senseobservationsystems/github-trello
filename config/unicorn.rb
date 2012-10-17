@@ -13,6 +13,8 @@ path = File.join(wdir, "trello.yml")
       config = <<YAML
 oauth_token: [token]
 api_key: [key]
+issue_list:
+  default: 50754a500d6636b66f48110a
 developer_portal:
   path: "/var/www/developer-portal"
   pid: "/var/www/developer-portal/tmp/pids/unicorn.pid"
@@ -41,6 +43,6 @@ pid "/var/www/github-trello/tmp/pids/unicorn.pid"
 stderr_path "/var/www/github-trello/tmp/log/unicorn.log"
 stdout_path "/var/www/github-trello/tmp/log/unicorn.log"
 
-listen 3000
+listen 5678
 worker_processes 2
 timeout 30

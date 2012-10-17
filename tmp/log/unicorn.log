@@ -433,3 +433,51 @@ From github.com:senseobservationsystems/developer-portal
 Merge made by recursive.
  docs/index.erb |    3 ---
  1 files changed, 0 insertions(+), 3 deletions(-)
+I, [2012-10-17T17:42:47.764054 #19123]  INFO -- : listening on addr=0.0.0.0:3000 fd=8
+I, [2012-10-17T17:42:47.764448 #19123]  INFO -- : worker=0 spawning...
+I, [2012-10-17T17:42:47.775498 #19123]  INFO -- : worker=1 spawning...
+I, [2012-10-17T17:42:47.778080 #19129]  INFO -- : worker=0 spawned pid=19129
+I, [2012-10-17T17:42:47.778736 #19129]  INFO -- : Refreshing Gem list
+I, [2012-10-17T17:42:47.785471 #19123]  INFO -- : master process ready
+I, [2012-10-17T17:42:47.801879 #19132]  INFO -- : worker=1 spawned pid=19132
+I, [2012-10-17T17:42:47.802502 #19132]  INFO -- : Refreshing Gem list
+I, [2012-10-17T17:42:47.882095 #19129]  INFO -- : worker=0 ready
+I, [2012-10-17T17:42:47.912200 #19132]  INFO -- : worker=1 ready
+I, [2012-10-17T17:42:58.321604 #19123]  INFO -- : reaped #<Process::Status: pid 19129 exit 0> worker=0
+I, [2012-10-17T17:42:58.322005 #19123]  INFO -- : reaped #<Process::Status: pid 19132 exit 0> worker=1
+I, [2012-10-17T17:42:58.322433 #19123]  INFO -- : master complete
+I, [2012-10-17T17:43:37.520584 #19289]  INFO -- : listening on addr=0.0.0.0:5678 fd=8
+I, [2012-10-17T17:43:37.520979 #19289]  INFO -- : worker=0 spawning...
+I, [2012-10-17T17:43:37.532030 #19289]  INFO -- : worker=1 spawning...
+I, [2012-10-17T17:43:37.534544 #19295]  INFO -- : worker=0 spawned pid=19295
+I, [2012-10-17T17:43:37.535186 #19295]  INFO -- : Refreshing Gem list
+I, [2012-10-17T17:43:37.544285 #19298]  INFO -- : worker=1 spawned pid=19298
+I, [2012-10-17T17:43:37.544905 #19298]  INFO -- : Refreshing Gem list
+I, [2012-10-17T17:43:37.545490 #19289]  INFO -- : master process ready
+I, [2012-10-17T17:43:37.629276 #19295]  INFO -- : worker=0 ready
+I, [2012-10-17T17:43:37.670785 #19298]  INFO -- : worker=1 ready
+From github.com:senseobservationsystems/developer-portal
+ * branch            master     -> FETCH_HEAD
+Already up-to-date.
+{"payload"=>"{\"repository\":{\"name\":\"github-trello\",\"open_issues_count\":2,\"has_wiki\":true,\"size\":124,\"forks_count\":0,\"created_at\":\"2012-10-16T13:25:38Z\",\"clone_url\":\"https://github.com/senseobservationsystems/github-trello.git\",\"watchers\":0,\"private\":false,\"updated_at\":\"2012-10-17T15:21:19Z\",\"url\":\"https://api.github.com/repos/senseobservationsystems/github-trello\",\"_links\":{\"self\":{\"href\":\"https://api.github.com/repos/senseobservationsystems/github-trello\"}},\"fork\":true,\"ssh_url\":\"git@github.com:senseobservationsystems/github-trello.git\",\"git_url\":\"git://github.com/senseobservationsystems/github-trello.git\",\"language\":\"Ruby\",\"id\":6244719,\"pushed_at\":\"2012-10-17T15:19:29Z\",\"svn_url\":\"https://github.com/senseobservationsystems/github-trello\",\"mirror_url\":null,\"open_issues\":2,\"has_downloads\":true,\"has_issues\":true,\"homepage\":\"\",\"full_name\":\"senseobservationsystems/github-trello\",\"forks\":0,\"description\":\"Manage Trello cards through Github commit messages\",\"html_url\":\"https://github.com/senseobservationsystems/github-trello\",\"watchers_count\":0,\"owner\":{\"avatar_url\":\"https://secure.gravatar.com/avatar/c69ee84a2f20824ac51a502a9f72cd48?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-org-420.png\",\"gravatar_id\":\"c69ee84a2f20824ac51a502a9f72cd48\",\"url\":\"https://api.github.com/users/senseobservationsystems\",\"_links\":{\"self\":{\"href\":\"https://api.github.com/users/senseobservationsystems\"}},\"id\":2070814,\"login\":\"senseobservationsystems\"}},\"sender\":{\"avatar_url\":\"https://secure.gravatar.com/avatar/5e663c9fc0ebe46af81b8a49d5e2aa91?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png\",\"gravatar_id\":\"5e663c9fc0ebe46af81b8a49d5e2aa91\",\"url\":\"https://api.github.com/users/yulrizka\",\"_links\":{\"self\":{\"href\":\"https://api.github.com/users/yulrizka\"}},\"id\":117752,\"login\":\"yulrizka\"},\"action\":\"opened\",\"issue\":{\"number\":2,\"created_at\":\"2012-10-17T15:45:44Z\",\"pull_request\":{\"diff_url\":null,\"patch_url\":null,\"html_url\":null},\"title\":\"trello test on production\",\"comments\":0,\"body\":\"Pim say hi\",\"updated_at\":\"2012-10-17T15:45:44Z\",\"url\":\"https://api.github.com/repos/senseobservationsystems/github-trello/issues/2\",\"id\":7660136,\"assignee\":null,\"milestone\":null,\"closed_at\":null,\"user\":{\"gravatar_id\":\"5e663c9fc0ebe46af81b8a49d5e2aa91\",\"avatar_url\":\"https://secure.gravatar.com/avatar/5e663c9fc0ebe46af81b8a49d5e2aa91?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png\",\"url\":\"https://api.github.com/users/yulrizka\",\"_links\":{\"self\":{\"href\":\"https://api.github.com/users/yulrizka\"}},\"id\":117752,\"login\":\"yulrizka\"},\"html_url\":\"https://github.com/senseobservationsystems/github-trello/issues/2\",\"labels\":[],\"state\":\"open\"}}"}
+{"default"=>"50754a500d6636b66f48110a"}
+[0G
+[1mFrom:[0m /var/www/github-trello/lib/github-trello/server.rb @ line 125 self.POST /issue:
+
+    [1;34m120[0m:       [1;31munless[0m list_id
+    [1;34m121[0m:         puts [32m[1;32m"[0m[32m[ERROR] Issue from #{repos}[0m[32m but no list_id entry nor default entry found in config[1;32m"[0m[32m[0m
+    [1;34m122[0m:         [1;31mreturn[0m
+    [1;34m123[0m:       [1;31mend[0m
+    [1;34m124[0m: 
+ => [1;34m125[0m:       binding.pry
+    [1;34m126[0m:       [0;34m#parse issue to create a nice card name and description with a link to the issue[0m
+    [1;34m127[0m:       issue = payload[[32m[1;32m"[0m[32missue[1;32m"[0m[32m[0m]
+    [1;34m128[0m:       card_name = [32m[1;32m"[0m[32m#{issue[[32m[1;32m"[0m[32mtitle[1;32m"[0m[32m[0m]}[0m[32m[1;32m"[0m[32m[0m
+    [1;34m129[0m:       card_desc = [32m[1;32m"[0m[32m#{issue[[32m[1;32m"[0m[32mbody[1;32m"[0m[32m[0m]}[0m[32m[1;36m\n[0m[32m[1;36m\n[0m[32mGithub [issue #{issue[[32m[1;32m"[0m[32mnumber[1;32m"[0m[32m[0m]}[0m[32m](#{issue[[32m[1;32m"[0m[32mhtml_url[1;32m"[0m[32m[0m]}[0m[32m)[1;32m"[0m[32m[0m
+    [1;34m130[0m:       card = {}
+
+[1] pry(#<GithubTrello::Server>)> 
+Posting card {:name=>"trello test on production", :desc=>"Pim say hi\n\nGithub [issue 2](https://github.com/senseobservationsystems/github-trello/issues/2)", :idList=>"50754a500d6636b66f48110a"}.
+I, [2012-10-17T17:48:14.852496 #19289]  INFO -- : reaped #<Process::Status: pid 19295 exit 0> worker=0
+I, [2012-10-17T17:48:14.852873 #19289]  INFO -- : reaped #<Process::Status: pid 19298 exit 0> worker=1
+I, [2012-10-17T17:48:14.853311 #19289]  INFO -- : master complete
