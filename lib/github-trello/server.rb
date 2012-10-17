@@ -120,7 +120,6 @@ module GithubTrello
         return
       end
 
-      binding.pry
       #parse issue to create a nice card name and description with a link to the issue
       issue = payload["issue"]
       card_name = "#{issue["title"]}"
