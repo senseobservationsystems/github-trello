@@ -110,6 +110,7 @@ module GithubTrello
       end
 
       repos = payload["repository"]["full_name"]
+      repos_url = payload["repository"]["html_url"]
       puts config["issue_list"].inspect
       list_id = config["issue_list"][repos]
       unless list_id 
@@ -123,7 +124,7 @@ module GithubTrello
       #parse issue to create a nice card name and description with a link to the issue
       issue = payload["issue"]
       card_name = "#{issue["title"]}"
-      card_desc = "#{issue["body"]}\n\nGithub [issue #{issue["number"]}](#{issue["html_url"]})"
+      card_desc = "#{issue["body"]}\n\nGithub [issue #{issue["number"]}](#{issue["html_url"]}) in [#{repos}](#{repos_url})."
       card = {}
       card[:name] = card_name
       card[:desc] = card_desc
