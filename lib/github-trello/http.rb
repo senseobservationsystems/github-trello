@@ -24,6 +24,11 @@ module GithubTrello
       http_request(:post, "/1/cards/#{card_id}/actions/comments", :body => "text=#{CGI::escape(comment)}")
     end
 
+    def add_label(card_id, label)
+			params = {:value => label}
+      http_request(:post, "/1/cards/#{card_id}/labels", :params => params)
+    end
+
     def get_cards(list_id)
       http_request(:get, "/1/lists/#{list_id}/cards", :params => {:fields => "idList"})
     end
