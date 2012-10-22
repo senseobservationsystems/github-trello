@@ -3,6 +3,7 @@
 require "yaml"
 require 'github_api'
 require 'sqlite3'
+require 'json'
 #require "github-trello/http"
 require "#{File.dirname(__FILE__)}/lib/github-trello/http.rb"
 
@@ -51,7 +52,8 @@ ARGV.each do|a|
 		puts "\tPosting card #{card.inspect}.\n"
 		response = http.add_card(card)
 		puts response.inspect
-		if (response and response.has_key? 'id')
+		response = JSON.parse(response)
+		if (response and response.has_key?('id'))
 			card_id = response['id']
 			#add to database as well
 			puts "Putting (#{card_id},#{issue['id']}) into database.\n"

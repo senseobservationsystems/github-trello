@@ -2,10 +2,20 @@ require "json"
 require "sinatra/base"
 require "github-trello/version"
 require "github-trello/http"
+require 'sqlite3'
 
 
 module GithubTrello
   class Server < Sinatra::Base
+		wdir = "/var/www/github-trello"
+		path = File.join(wdir, "github-trello.db")
+		if File.exists?(path)
+			db = SQLite3::Database.new(path)
+		else
+			puts "Ai no database found."
+			exit
+		end
+
     post "/posthook" do
       config, http = self.class.config, self.class.http
 
@@ -109,6 +119,12 @@ module GithubTrello
         puts "Not handling issue #{payload["action"]}."
         return
       end
+      issue = payload["issue"]
+			
+			if (db.execute("SELECT COUNT(1) FROM cards WHERE issue_id == #{issue['id']}")[0][0] != 0)
+				puts "Issue with id #{issues['id']} already exists"
+				return
+			end
 
       repos = payload["repository"]["full_name"]
       repos_url = payload["repository"]["html_url"]
@@ -123,7 +139,6 @@ module GithubTrello
       end
 
       #parse issue to create a nice card name and description with a link to the issue
-      issue = payload["issue"]
       card_name = "#{issue["title"]}"
       card_desc = "#{issue["body"]}\n\nGithub [issue #{issue["number"]}](#{issue["html_url"]}) in [#{repos}](#{repos_url})."
       card = {}
@@ -131,7 +146,24 @@ module GithubTrello
       card[:desc] = card_desc
       card[:idList] = list_id
       puts "Posting card #{card.inspect}."
-      http.add_card(card)
+      response = http.add_card(card)
+			response = JSON.parse(response)
+			if (response and response.has_key? 'id')
+				card_id = response['id']
+				#add to database as well
+				puts "Putting (#{card_id},#{issue['id']}) into database.\n"
+				db.execute("insert into cards (card_id,issue_id) values ('#{card_id}','#{issue['id']}')")
+				#add label
+				label = config['repos_labels'][repos]
+				unless label
+					label = config['repos_labels']['default']
+				end
+				puts "Found label #{label} for issue"
+				if (label)
+					response = http.add_label card_id, label
+					puts response.inspect
+				end
+			end
 
       ""
     end
