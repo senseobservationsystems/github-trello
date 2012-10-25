@@ -30,6 +30,9 @@ on_deploy:
   move_to:
     [repo name]: [list id]
   archive: true
+developer_portal:
+  path: "/var/www/developer.sense-os.nl"
+  pid: "/var/www/developer.sense-os.nl/tmp/pids/unicorn.pid"
 YAML
 
       File.open(path, "w+") do |f|

@@ -11,3 +11,4 @@ gem "sqlite3", "~> 1.3.6"
 group :development do
   gem "pry"
 end
+gem "resque", :require => true
