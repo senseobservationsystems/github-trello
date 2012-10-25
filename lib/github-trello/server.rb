@@ -86,7 +86,7 @@ module GithubTrello
 
         pid = `cat #{devportal_pid}`
         unless pid.empty?
-          cmd = "cd #{devportal_path};git reset --hard HEAD;git pull origin master; rake build; kill -HUP #{pid}"
+          cmd = "cd #{devportal_path};git reset --hard HEAD;git pull origin master;  LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 RACK_ENV=production rake build; kill -HUP #{pid}"
           result = `#{cmd}`
           puts result
         end
