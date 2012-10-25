@@ -2,13 +2,15 @@ require "json"
 require "sinatra/base"
 require "github-trello/version"
 require "github-trello/http"
+require "github-trello/dev_portal_updater.rb"
 require 'sqlite3'
+require "resque"
 
 
 module GithubTrello
   class Server < Sinatra::Base
-		wdir = "/var/www/github-trello"
-		path = File.join(wdir, "github-trello.db")
+    wdir = File.dirname(__FILE__)
+		path = File.join(wdir, "../../", "github-trello.db")
 		if File.exists?(path)
 			db = SQLite3::Database.new(path)
 		else
@@ -84,12 +86,7 @@ module GithubTrello
         devportal_path = config["developer_portal"]["path"]
         devportal_pid = config["developer_portal"]["pid"]
 
-        pid = `cat #{devportal_pid}`
-        unless pid.empty?
-          cmd = "cd #{devportal_path};git reset --hard HEAD;git pull origin master;  LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 RACK_ENV=production rake build; kill -HUP #{pid}"
-          result = `#{cmd}`
-          puts result
-        end
+        Resque.enqueue(GithubTrello::DevPortalUpdater, devportal_path, devportal_pid)
       end
     end
 
@@ -105,4 +102,6 @@ module GithubTrello
     def self.config; @config end
     def self.http; @http end
   end
+
+
 end

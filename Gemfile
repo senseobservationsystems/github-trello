@@ -5,3 +5,4 @@ gem "rake"
 gem "github_api"
 gem "unicorn"
 gem "pry"
+gem "resque", :require => true

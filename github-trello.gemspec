@@ -16,6 +16,8 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency "vegas", "~>0.1.8"
   s.add_runtime_dependency "sinatra", "~>1.3.2"
+  s.add_runtime_dependency "resque", "~>1.23.0"
+
 
   s.files        = Dir.glob("lib/**/*") + %w[MIT-LICENSE README.md Rakefile]
   s.executables  = ["trello-web"]
