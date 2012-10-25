@@ -74,6 +74,24 @@ module GithubTrello
       ""
     end
 
+    post "/devportal" do
+      config = self.class.config
+      payload = JSON.parse(params[:payload])
+      refs = payload["ref"]
+
+      if refs == "refs/heads/master"
+        devportal_path = config["developer_portal"]["path"]
+        devportal_pid = config["developer_portal"]["pid"]
+
+        pid = `cat #{devportal_pid}`
+        unless pid.empty?
+          cmd = "cd #{devportal_path};git reset --hard HEAD;git pull origin master; rake build; kill -HUP #{pid}"
+          result = `#{cmd}`
+          puts result
+        end
+      end
+    end
+
     get "/" do
       ""
     end
