@@ -14,10 +14,11 @@ path = File.join(wdir, "trello.yml")
 oauth_token: [token]
 api_key: [key]
 issue_list:
+  [repository]: [list id]
   default: 50754a500d6636b66f48110a
 developer_portal:
-  path: "/var/www/developer-portal"
-  pid: "/var/www/developer-portal/tmp/pids/unicorn.pid"
+  path: "/var/www/developer.sense-os.nl"
+  pid: "/var/www/developer.sense-os.nl/tmp/pids/unicorn.pid"
 on_start:
   move_to: [list id]
   archive: true

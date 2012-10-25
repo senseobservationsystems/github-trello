@@ -59,7 +59,7 @@ ARGV.each do|a|
 			puts "Putting (#{card_id},#{issue['id']}) into database.\n"
 			db.execute("insert into cards (card_id,issue_id) values ('#{card_id}','#{issue['id']}')")
 			#add label
-			label = config['repos_labels'][repos]
+			label = config['repos_labels'][a]
 			unless label
 				label = config['repos_labels']['default']
 			end
