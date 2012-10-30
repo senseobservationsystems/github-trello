@@ -6,7 +6,6 @@ require "github-trello/dev_portal_updater.rb"
 require 'sqlite3'
 require "resque"
 
-
 module GithubTrello
   class Server < Sinatra::Base
     wdir = File.dirname(__FILE__)
@@ -22,6 +21,8 @@ module GithubTrello
       config, http = self.class.config, self.class.http
 
       payload = JSON.parse(params[:payload])
+
+      puts "Issue payload #{payload}"
 
       #For now only handle newly created issues
       if (payload["action"] != "opened")
@@ -47,7 +48,7 @@ module GithubTrello
       labels = issue["labels"]
       is_enhancement = false
       labels.each do|label|
-        if label["name"] == "bug"
+        if label["name"] == "enhancement"
           is_enhancement = true
         end
       end
@@ -100,6 +101,24 @@ module GithubTrello
 
     get "/" do
       ""
+    end
+
+    post "/devportal" do
+      config = self.class.config
+      payload = JSON.parse(params[:payload])
+      refs = payload["ref"]
+
+      if refs == "refs/heads/master"
+        devportal_path = config["developer_portal"]["path"]
+        devportal_pid = config["developer_portal"]["pid"]
+
+        pid = `cat #{devportal_pid}`
+        unless pid.empty?
+          cmd = "cd #{devportal_path};git pull origin master -f; rake build; kill -HUP #{pid}"
+          result = `#{cmd}`
+          puts result
+        end
+      end
     end
 
     def self.config=(config)
