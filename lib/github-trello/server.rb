@@ -34,21 +34,41 @@ module GithubTrello
 				return
 			end
 
-      repos = payload["repository"]["full_name"]
-      repos_url = payload["repository"]["html_url"]
-      puts config["issue_list"].inspect
-      list_id = config["issue_list"][repos]
-      unless list_id 
-        list_id = config["issue_list"]["default"]
+      # find repository type (backend, api lib, etc)
+      repo_name = payload["repository"]["full_name"]
+      repo_url = payload["repository"]["html_url"]
+      repo_type = config["repo_types"][repo_name]
+      unless repo_type
+        repo_type = config["repo_types"]["default"]
+      end
+
+      # see if the issue has been labeled as an enhancement in GitHub
+      labels = issue["labels"]
+      is_enhancement = false
+      labels.each do|label|
+        if label["name"] == "bug"
+          is_enhancement = true
+        end
+      end
+      
+      # get the proper Trello list ID from the config
+      if is_enhancement
+        list_id = config["inbox_lists"][repo_type]
+      else
+        list_id = config["bugs_lists"][repo_type]
       end
       unless list_id
-        puts "[ERROR] Issue from #{repos} but no list_id entry nor default entry found in config"
+        puts "[ERROR] Issue from #{repo_name} but no list_id entry nor default entry found in config"
         return
       end
 
-      #parse issue to create a nice card name and description with a link to the issue
-      card_name = "#{issue["title"]}"
-      card_desc = "#{issue["body"]}\n\nGithub [issue #{issue["number"]}](#{issue["html_url"]}) in [#{repos}](#{repos_url})."
+      # parse issue to create a nice card name and description with a link to the issue
+      if is_enhancement
+        card_name = "#{issue["title"]}"
+      else
+        card_name = "Bug: #{issue["title"]}"
+      end
+      card_desc = "#{issue["body"]}\n\nGithub [issue #{issue["number"]}](#{issue["html_url"]}) in [#{repo_name}](#{repo_url})."
       card = {}
       card[:name] = card_name
       card[:desc] = card_desc
@@ -61,19 +81,7 @@ module GithubTrello
 				#add to database as well
 				puts "Putting (#{card_id},#{issue['id']}) into database.\n"
 				db.execute("insert into cards (card_id,issue_id) values ('#{card_id}','#{issue['id']}')")
-				#add label
-				label = config['repos_labels'][repos]
-				unless label
-					label = config['repos_labels']['default']
-				end
-				puts "Found label #{label} for issue"
-				if (label)
-					response = http.add_label card_id, label
-					puts response.inspect
-				end
 			end
-
-      ""
     end
 
     post "/devportal" do
