@@ -22,6 +22,8 @@ module GithubTrello
 
       payload = JSON.parse(params[:payload])
 
+      puts "Issue payload #{payload}"
+
       #For now only handle newly created issues
       if (payload["action"] != "opened")
         puts "Not handling issue #{payload["action"]}."
@@ -46,7 +48,7 @@ module GithubTrello
       labels = issue["labels"]
       is_enhancement = false
       labels.each do|label|
-        if label["name"] == "bug"
+        if label["name"] == "enhancement"
           is_enhancement = true
         end
       end
