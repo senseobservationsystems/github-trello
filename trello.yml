@@ -1,16 +1,46 @@
 api_key: 347516bba416a50240a960770fbd054e
 oauth_token: b28080bc53868d3475e2560f31315a2586d52cd0ec161c32b6b8b627830d003e
-issue_list:
-  default: 50754a500d6636b66f48110a
-repos_labels:
-  senseobservationsystems/commonsense-rest: green
-  senseobservationsystems/commonsense-backend: green
-  senseobservationsystems/sense-android-library: yellow
-  senseobservationsystems/sense-android-phonegap: yellow
-  senseobservationsystems/commonsense-php-lib: yellow
-  senseobservationsystems/commonsense-python-lib: yellow
-  senseobservationsystems/commonsense-javascript-lib: yellow
-  senseobservationsystems/sense-ios-library: yellow
+repo_types:
+  senseobservationsystems/activity-detection: intelligence
+  senseobservationsystems/commonsense-backend: backend
+  senseobservationsystems/commonsense-frontend: web-frontend
+  senseobservationsystems/commonsense-greenhouse: projects
+  senseobservationsystems/commonsense-javascript-lib: api-libraries
+  senseobservationsystems/commonsense-php-lib: api-libraries
+  senseobservationsystems/commonsense-python-lib: api-libraries                           
+  senseobservationsystems/commonsense-reception: api-libraries
+  senseobservationsystems/commonsense-rest: backend
+  senseobservationsystems/commonsense-ruby-lib: api-libraries
+  senseobservationsystems/dashboard: web-frontend
+  senseobservationsystems/dashboard-widgets: web-frontend
+  senseobservationsystems/developer-portal: web-frontend
+  senseobservationsystems/ivitality-android: mobile-apps
+  senseobservationsystems/moodie-portal: projects
+  senseobservationsystems/omniauth-sense: api-libraries
+  senseobservationsystems/sense-android-app: mobile-apps
+  senseobservationsystems/sense-android-demo: mobile-apps
+  senseobservationsystems/sense-android-library: api-libraries
+  senseobservationsystems/sense-android-phonegap: mobile-apps
+  senseobservationsystems/sense-ios-library: api-libraries
+  default: default
+bugs_lists:
+  data-gathering: 508fca87a864f9b646002d6a
+  intelligence: 508fca92a864f9b646002d73
+  backend: 508fcaa2a864f9b646002d7b
+  api-libraries: 508fcab1a864f9b646002d81
+  mobile-apps: 508fcabba864f9b646002d8e
+  web-frontend: 508fcac9a864f9b646002d9e
+  projects: 508fcad1a864f9b646002da6
+  default: 508fcaa2a864f9b646002d7b
+inbox_lists:
+  data-gathering: 50815d394e11cfdd6a002c12
+  intelligence: 50815b164e11cfdd6a002b09
+  backend: 508159174e11cfdd6a002a02
+  api-libraries: 508159204e11cfdd6a002a09
+  mobile-apps: 508159724e11cfdd6a002a26
+  web-frontend: 5081599c4e11cfdd6a002a30
+  projects: 506066f8a6b30263541f61dd
+  default: 508159174e11cfdd6a002a02
 developer_portal:
   path: "/var/www/developer.sense-os.nl"
   pid: "/var/www/developer.sense-os.nl/tmp/pids/unicorn.pid"
