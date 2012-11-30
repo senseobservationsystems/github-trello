@@ -26,7 +26,7 @@ repo_types:
 bugs_lists:
   data-gathering: 508fca87a864f9b646002d6a
   intelligence: 508fca92a864f9b646002d73
-  backend: 508fcaa2a864f9b646002d7b
+  backend: 50980ec062955dfd6c002291
   api-libraries: 508fcab1a864f9b646002d81
   mobile-apps: 508fcabba864f9b646002d8e
   web-frontend: 508fcac9a864f9b646002d9e
