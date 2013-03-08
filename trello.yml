@@ -7,13 +7,14 @@ repo_types:
   senseobservationsystems/commonsense-greenhouse: projects
   senseobservationsystems/commonsense-javascript-lib: api-libraries
   senseobservationsystems/commonsense-php-lib: api-libraries
-  senseobservationsystems/commonsense-python-lib: api-libraries                           
+  senseobservationsystems/commonsense-python-lib: api-libraries
   senseobservationsystems/commonsense-reception: api-libraries
   senseobservationsystems/commonsense-rest: backend
   senseobservationsystems/commonsense-ruby-lib: api-libraries
   senseobservationsystems/dashboard: web-frontend
   senseobservationsystems/dashboard-widgets: web-frontend
   senseobservationsystems/developer-portal: web-frontend
+  senseobservationsystems/device-service-manager: intelligence
   senseobservationsystems/ivitality-android: mobile-apps
   senseobservationsystems/moodie-portal: projects
   senseobservationsystems/omniauth-sense: api-libraries

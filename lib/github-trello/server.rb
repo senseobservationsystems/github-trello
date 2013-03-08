@@ -20,9 +20,9 @@ module GithubTrello
     post "/issue" do
       config, http = self.class.config, self.class.http
 
+      puts "Issue #{params}"
       payload = JSON.parse(params[:payload])
 
-      puts "Issue payload #{payload}"
 
       #For now only handle newly created issues
       if (payload["action"] != "opened")
